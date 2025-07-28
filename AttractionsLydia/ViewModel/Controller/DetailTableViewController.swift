@@ -1,13 +1,13 @@
 //
-//  HomeTableViewController.swift
+//  DetailTableViewController.swift
 //  AttractionsLydia
 //
-//  Created by Lydia Lu on 2025/7/27.
+//  Created by Lydia Lu on 2025/7/28.
 //
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
+class DetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

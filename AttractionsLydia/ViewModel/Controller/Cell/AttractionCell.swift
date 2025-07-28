@@ -1,13 +1,13 @@
 //
-//  CustomCell.swift
+//  AttractionCell.swift
 //  AttractionsLydia
 //
-//  Created by Lydia Lu on 2025/7/27.
+//  Created by Lydia Lu on 2025/7/28.
 //
 
 import UIKit
 
-class CustomCell: UITableViewCell {
+class AttractionCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

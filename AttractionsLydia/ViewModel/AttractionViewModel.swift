@@ -10,12 +10,11 @@ import Foundation
 class AttractionViewModel {
     private let service = AttractionsService()
 
-    func loadAttractions(lang: String = "zh-tw", completion: @escaping ([String]) -> Void) {
+    func loadAttractions(lang: String = "zh-tw", completion: @escaping ([Attraction]) -> Void) {
         service.fetchAttractions(lang: lang) { result in
             switch result {
-            case .success(let Attractions):
-                let names = Attractions.map { $0.name }
-                completion(names)
+            case .success(let attractions):
+                completion(attractions) // 直接回傳 Attraction 陣列
             case .failure(let error):
                 print("抓取失敗: \(error.localizedDescription)")
                 completion([])
@@ -23,3 +22,4 @@ class AttractionViewModel {
         }
     }
 }
+
