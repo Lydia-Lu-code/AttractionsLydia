@@ -1,19 +1,9 @@
-//
-//  DetailCell.swift
-//  AttractionsLydia
-//
-//  Created by Lydia Lu on 2025/7/28.
-//
-
 import UIKit
 
-
 class ActivityCell: UITableViewCell {
-    
+
     var titleLabel = UILabel()
     var contentLabel = UILabel()
-    
-    var urlString = String()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,6 +16,7 @@ class ActivityCell: UITableViewCell {
     }
 
     private func setupViews() {
+        
         titleLabel.font = .boldSystemFont(ofSize: 16)
         contentLabel.font = .systemFont(ofSize: 14)
         contentLabel.numberOfLines = 0
@@ -36,6 +27,7 @@ class ActivityCell: UITableViewCell {
         stackView.spacing = 6
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
+        
         contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
@@ -45,35 +37,24 @@ class ActivityCell: UITableViewCell {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
         ])
     }
-
+    
     func set(title: String, content: String) {
         titleLabel.text = title
-        contentLabel.text = content
+
+        if title == "網址" {
+            contentLabel.attributedText = NSAttributedString(
+                string: content,
+                attributes: [
+                    .underlineStyle: NSUnderlineStyle.single.rawValue,
+                    .foregroundColor: UIColor.systemBlue
+                ]
+            )
+        } else {
+            contentLabel.text = content
+            contentLabel.textColor = .black
+        }
     }
+
 }
 
 
-//class DetailCell: UITableViewCell {
-//
-//    var titleLabel = UILabel()
-//    var contentLabel = UILabel()
-//    
-//    var urlString = String()
-//    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-//
-//    
-//    func set(title: String, content: String) {
-//        titleLabel.text = title
-//        contentLabel.text = content
-//    }
-//}

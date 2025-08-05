@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MainViewModel {
     private let eventViewModel = EventViewModel()
@@ -20,20 +21,31 @@ class MainViewModel {
         group.enter()
         eventViewModel.loadTopNews(lang: lang) { [weak self] newsList in
             self?.eventItem = newsList
-            print("最新消息抓到 \(newsList.count) 筆")
             group.leave()
         }
 
         group.enter()
         attractionViewModel.loadAttractions(lang: lang) { [weak self] attractionList in
             self?.attractionItem = attractionList
-            print("景點資料抓到 \(attractionList.count) 筆")
             group.leave()
         }
-
+        
         group.notify(queue: .main) {
             completion()
         }
     }
 }
 
+
+extension UIColor {
+    convenience init(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+        var rgb: UInt64 = 0
+        Scanner(string: hexSanitized).scanHexInt64(&rgb)
+        let r = CGFloat((rgb & 0xFF0000) >> 16) / 255
+        let g = CGFloat((rgb & 0x00FF00) >> 8) / 255
+        let b = CGFloat(rgb & 0x0000FF) / 255
+        self.init(red: r, green: g, blue: b, alpha: 1)
+    }
+}

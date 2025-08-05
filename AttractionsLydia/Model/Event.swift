@@ -13,6 +13,7 @@ struct News: Decodable {
     let id: Int
     let title: String
     let description: String
+    let url: String
 }
 
 struct NewsResponse: Decodable {

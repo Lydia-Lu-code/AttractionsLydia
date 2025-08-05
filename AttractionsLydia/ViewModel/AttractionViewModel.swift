@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+
 class AttractionViewModel {
     private let service = AttractionsService()
 

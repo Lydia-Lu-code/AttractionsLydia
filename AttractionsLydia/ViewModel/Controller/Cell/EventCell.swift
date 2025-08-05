@@ -36,6 +36,8 @@ class EventCell: UITableViewCell {
         contentView.layer.borderWidth = 1
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
+        
+        
     }
 
     required init?(coder: NSCoder) {

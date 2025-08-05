@@ -1,29 +1,25 @@
-//
-//  WebViewController.swift
-//  AttractionsLydia
-//
-//  Created by Lydia Lu on 2025/7/28.
-//
-
 import UIKit
+import WebKit
 
 class WebViewController: UIViewController {
+    var urlString: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
 
-        // Do any additional setup after loading the view.
+        let webView = WKWebView(frame: view.bounds)
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(webView)
+
+        if let urlString = urlString, let url = URL(string: urlString) {
+            print("開啟 WebView 網址：\(urlString)")
+            webView.load(URLRequest(url: url))
+        } else {
+            print("無效網址")
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
+

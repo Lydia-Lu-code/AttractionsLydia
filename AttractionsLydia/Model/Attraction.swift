@@ -12,6 +12,14 @@ struct Attraction: Decodable {
     let name: String
     let introduction: String
     let images: [ImageData]
+    let official_site: String
+    
+    let distric: String?
+    let address: String?
+    let tel: String?
+    let email: String?
+    let ticket: String?
+    let url: String?
     
     struct ImageData: Decodable {
         let src: String
@@ -23,5 +31,7 @@ struct AttractionResponse: Decodable {
     let total: Int
     let data: [Attraction]
 }
+
+
 
 
